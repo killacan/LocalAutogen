@@ -1,4 +1,6 @@
 import autogen
+from dotenv import load_dotenv
+import os
 
 load_dotenv()
 
@@ -7,12 +9,12 @@ openAiApiKey = os.getenv('OPENAI_API_KEY')
 config_list = [
     {
         'model': 'gpt-3.5-turbo-16k',
-        'api' : openAiApiKey,
+        'api_key' : openAiApiKey,
     }
 ]
 
 llm_config={
-    "request_timeout": 600,
+    "timeout": 600,
     "seed": 42,
     "config_list": config_list,
     "temperature": 0,
@@ -33,6 +35,9 @@ user_proxy = autogen.UserProxyAgent(
     system_message="""Reply TERMINATE if the task has been solved at full satisfaction, otherwise, reply CONTINUE, or the reason why the task is not solved yet.""",
 )
 
-task = """
-Give me summary of this article: https://www.theguardian.com/world/2023/dec/20/russia-ukraine-war-at-a-glance-what-we-know-on-day-665
-"""
+task = input("What is the task? ")
+
+user_proxy.initiate_chat(
+    assistant, 
+    message=task
+    )
