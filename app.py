@@ -6,6 +6,8 @@ load_dotenv()
 
 openAiApiKey = os.getenv('OPENAI_API_KEY')
 
+# url = "http://127.0.0.1:5000/v1/chat/completions"
+
 config_list = [
     {
         'model': 'gpt-3.5-turbo-16k',
@@ -40,5 +42,4 @@ task = input("What is the task? ")
 user_proxy.initiate_chat(
     assistant, 
     message=task
-    
     )
