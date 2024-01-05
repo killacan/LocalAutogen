@@ -17,9 +17,9 @@ from memgpt.autogen.memgpt_agent import create_memgpt_autogen_agent_from_config
 from memgpt.presets.presets import DEFAULT_PRESET
 from memgpt.constants import LLM_MAX_TOKENS
 
-# LLM_BACKEND = "openai"
+LLM_BACKEND = "openai"
 # LLM_BACKEND = "azure"
-LLM_BACKEND = "local"
+# LLM_BACKEND = "local"
 
 load_dotenv()
 
@@ -187,7 +187,7 @@ manager = autogen.GroupChatManager(groupchat=groupchat, llm_config=llm_config)
 # Begin the group chat with a message from the user
 user_proxy.initiate_chat(
     manager,
-    message="please make a snake game in python. Save the code to a file called snake_game.py",
+    message="make a python script that outputs the first 200 prime numbers.",
 )
 
 # import autogen
